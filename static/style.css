@@ -1,0 +1,32 @@
+:root {
+    --background-color: #999999;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+body {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    background: repeat url("/static/images/background.png");
+}
+
+.page-header {
+    background: var(--background-color);
+}
+
+.logo-text {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 2.7rem;
+    font-weight: 600;
+    color: white !important;
+    padding-left: 100px;
+    font-family: "Charmonman", cursive;
+}
