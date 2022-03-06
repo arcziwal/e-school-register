@@ -17,25 +17,26 @@
             <div class="container-fluid">
                 <a class="navbar-brand logo-text text-white" href="/">e-Dziennik Szkolny</a>
                 <ul class="navbar-nav">
-                    {% for nav_bar_element in nav_bar_elemens %}
-                    <li>
-                        <div class="box-1">
-                            <div class="btn btn-1">
-                                <span><a href="{{ nav_bar_element.href }}">{{ nav_bar_element.name }}</a></span>
+                    {% if nav_bar_elements is not none %}
+                        {% for nav_bar_element in nav_bar_elements %}
+                        <li>
+                            <div class="box-1">
+                                <div class="btn btn-1">
+                                    <span><a href="{{ nav_bar_element.href }}">{{ nav_bar_element.name }}</a></span>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    {% endfor %}
+                        </li>
+                        {% endfor %}
+                    {% endif %}
                 </ul>
             </div>
         </nav>
     </header>
-
     <section class="dashboard-section">
         <div class="row dashboard-nowrap">
-            <div class="m-4 p-3 width-medium text-color-darker bg-white">
+            <!--<div class="m-4 p-3 width-medium text-color-darker bg-white">-->
                 {% block content %}{% endblock content %}
-            </div>
+            <!--</div>-->
         </div>
     </section>
 

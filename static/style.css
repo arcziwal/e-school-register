@@ -114,3 +114,17 @@ a:hover {
     width: 75% !important;
     margin: auto !important;
 }
+
+.loader {
+    border: 16px solid white;
+    border-radius: 15px;
+    width: 33%;
+    height: 40%;
+    background-color: white;
+    margin:auto;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    position:fixed;
+}
