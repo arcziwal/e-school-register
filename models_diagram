@@ -1,0 +1,89 @@
+<mxfile host="app.diagrams.net" modified="2022-03-06T01:59:13.699Z" agent="5.0 (X11)" etag="Vwnj4tvRBn-PJU5r76nt" version="15.8.6" type="github">
+  <diagram id="MXsgAKJdt-I9Hj7cbHs_" name="Page-1">
+    <mxGraphModel dx="2417" dy="1962" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="5_Jb7bAcCqDYiw492jEs-1" target="5_Jb7bAcCqDYiw492jEs-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.46;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="5_Jb7bAcCqDYiw492jEs-1" target="5_Jb7bAcCqDYiw492jEs-21" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="415" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-1" value="&lt;blockquote&gt;&lt;div align=&quot;center&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;&lt;b&gt;Model Student:&lt;/b&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;CharField: Imię&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;CharField: Drugie imię&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;CharField: Nazwisko&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;DateField: Data urodzenia&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;DateField: Data dodania&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;CharField: PESEL&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;CharField: Adres zamieszkania&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;CharField: Imię i nazwisko ojca&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;CharField: Imię i nazwisko matki&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;ForeignKey: School_class&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;OnetoOneField: User&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;/blockquote&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="350" y="320" width="260" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="5_Jb7bAcCqDYiw492jEs-2" target="5_Jb7bAcCqDYiw492jEs-15" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="135" />
+              <mxPoint x="660" y="-120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-2" value="&lt;div&gt;&lt;b&gt;Model School_class:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;AutoField, PrimaryKey, choices: Numer klasy&lt;/div&gt;&lt;div&gt;ForeignKey: Teacher (Wychowawca)&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="348" y="60" width="262" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="5_Jb7bAcCqDYiw492jEs-4" target="5_Jb7bAcCqDYiw492jEs-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="5_Jb7bAcCqDYiw492jEs-4" target="5_Jb7bAcCqDYiw492jEs-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-4" value="&lt;div&gt;&lt;b&gt;Model Subject:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;IntegerField, choices: Nazwa przedmiotu&lt;/div&gt;&lt;div&gt;ForeignKey: Teacher&lt;/div&gt;&lt;div&gt;ForeignKey: School_class&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="10" y="60" width="258" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="5_Jb7bAcCqDYiw492jEs-5" target="5_Jb7bAcCqDYiw492jEs-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5_Jb7bAcCqDYiw492jEs-5" target="5_Jb7bAcCqDYiw492jEs-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-195" y="40" />
+              <mxPoint x="479" y="40" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-5" value="&lt;div&gt;&lt;b&gt;Model Lesson:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;DateField: Godzina rozpoczęcia&lt;/div&gt;&lt;div&gt;DateField: Godzina zakończenia&lt;/div&gt;&lt;div&gt;CharField: Temat&lt;/div&gt;&lt;div&gt;ForeignKey: Subject&lt;/div&gt;&lt;div&gt;ForeignKey: School_class&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-330" y="60" width="270" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="5_Jb7bAcCqDYiw492jEs-11" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="5_Jb7bAcCqDYiw492jEs-11" target="5_Jb7bAcCqDYiw492jEs-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-11" value="&lt;div&gt;&lt;b&gt;Model Attendance:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;BooleanField: Obecność&lt;/div&gt;&lt;div&gt;ForeignKey: Lesson&lt;/div&gt;&lt;div&gt;ForeignKey: Student&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="320" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="5_Jb7bAcCqDYiw492jEs-15" target="5_Jb7bAcCqDYiw492jEs-21" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="335" y="-220" />
+              <mxPoint x="850" y="-220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-15" value="&lt;div&gt;&lt;b&gt;Model Teacher:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Charfield: Imię&lt;/div&gt;&lt;div&gt;Charfield: Nazwisko&lt;/div&gt;&lt;div&gt;OneToOneField: User&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="210" y="-190" width="250" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.606;entryY=0.997;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="5_Jb7bAcCqDYiw492jEs-18" target="5_Jb7bAcCqDYiw492jEs-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.187;entryY=0.997;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="5_Jb7bAcCqDYiw492jEs-18" target="5_Jb7bAcCqDYiw492jEs-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-18" value="&lt;div&gt;&lt;b&gt;Model Grade:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;FloatField, choices: Ocena&lt;/div&gt;&lt;div&gt;ForeignKey: Student&lt;/div&gt;&lt;div&gt;ForeignKey: Lesson&lt;/div&gt;&lt;div&gt;Charfield, choices: za co&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="470" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Jb7bAcCqDYiw492jEs-21" value="&lt;div&gt;&lt;b&gt;Model User:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="740" y="340" width="220" height="150" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
