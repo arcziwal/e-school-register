@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
-from django.contrib.auth.forms import UserCreationForm
+from .forms import AddStudentForm
+from django.http import HttpResponse
 
 
 class IndexPage(View):
@@ -18,10 +19,16 @@ class LoginView(View):
 
 class RegisterView(View):
     def get(self, request):
-        form = UserCreationForm()
-        context = {'form': form}
         return render(request, 'login_form.html')
 
+
+class AddStudentView(View):
+    def get(self, request):
+        form = AddStudentForm()
+        return render(request, 'add_student_form.html', {'form': form})
+
+    def post(self, request):
+        return HttpResponse("Dziękuję")
 
 
 class TemporaryView(View):

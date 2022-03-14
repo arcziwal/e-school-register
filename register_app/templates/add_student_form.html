@@ -1,0 +1,11 @@
+{% extends "__base__.html" %}
+
+{% block title %}Dodawanie ucznia{% endblock %}
+
+{% block content %}
+    <form action="/add_student" method="post">
+    {{ csrf_token }}
+    {{ form }}
+    <input type="submit" value="Prześlij">
+    </form>
+{% endblock %}
