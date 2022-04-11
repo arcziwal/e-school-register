@@ -1,6 +1,8 @@
 {% extends "__base__.html" %}
 
-{% block title %}Strona Główna{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block title %}Utwórz konto nauczyciela{% endblock %}
 
 {% block navbar %}
                 <ul class="navbar-nav">
@@ -8,7 +10,7 @@
                         {% for nav_bar_element in nav_bar_elements %}
                             <li>
                                 <div class="box-1">
-                                    <div class="btn btn-1 btn-2">
+                                    <div class="btn btn-1">
                                         <a href="{{ nav_bar_element.href }}"><span>{{ nav_bar_element.name }}</span></a>
                                     </div>
                                 </div>
@@ -20,12 +22,12 @@
 
 {% block content %}
     <div class="m-4 p-3 width-medium text-color-darker bg-white">
-        Random text
-        {{ test }}
-        {% if user_type == "student" %}
-            <h1>Witaj uczniu </h1>
-        {% elif user_type == "teacher" %}
-            <h1>Witaj nauczycielu</h1>
-        {% endif %}
+        <h1>Na tej stronie możesz utworzyć konto nauczyciela dodanego do bazy danych</h1>
+        <h3>Wybierz nauczyciela, dla którego chcesz utworzyć konto</h3>
+        <form action="/teacher/create_account/" method="post">
+            {% csrf_token %}
+            {{ form.teacher }}
+            <button type="submit">Dodaj konto</button>
+        </form>
     </div>
-{% endblock %}
+{% endblock content %}

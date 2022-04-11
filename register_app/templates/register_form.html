@@ -1,0 +1,14 @@
+{% extends "__base__.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Rejestracja nowego użytkownika{% endblock %}
+
+{% block content %}
+<div class="register-form">
+    <form action="/register/" method="post">
+        <label for="first_name">Imię:</label>
+        <input>
+    </form>
+</div>
+{% endblock %}

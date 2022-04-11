@@ -4,10 +4,11 @@
 
 {% block content %}
     <div class="loader">
-    Register
-        <form action="login_form.html" method="post">
-            {{ form }}
+    <h1>Logowanie na konto:</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" name="Zaloguj" value="Zaloguj">
         </form>
-        <h2>Logowanie na konto:</h2>
     </div>
 {% endblock %}

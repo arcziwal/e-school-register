@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'register_app',
+    'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,3 +127,5 @@ try:
 except ModuleNotFoundError:
     print("Local database settings not found")
     exit(0)
+
+LOGIN_REDIRECT_URL = '/temp/'

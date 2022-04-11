@@ -1,11 +1,61 @@
 {% extends "__base__.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}Dodawanie ucznia{% endblock %}
 
+{% block navbar %}
+                <ul class="navbar-nav">
+                    {% if nav_bar_elements is not none %}
+                        {% for nav_bar_element in nav_bar_elements %}
+                            <li>
+                                <div class="box-1">
+                                    <div class="btn btn-1">
+                                        <a href="{{ nav_bar_element.href }}"><span>{{ nav_bar_element.name }}</span></a>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+{% endblock %}
+
 {% block content %}
-    <form action="/add_student" method="post">
-    {{ csrf_token }}
-    {{ form }}
-    <input type="submit" value="Prześlij">
-    </form>
+    <div class="m-4 p-3 width-medium text-color-darker bg-white">
+            <form action="/student/add/" method="post" class="uniForm">
+                <div class="select2-container">
+                   <h2 class="test">Wprowadź dane nowego ucznia:</h2>
+                    {% csrf_token %}
+                    <div class="form-row justify-content-around">
+                        <div class="form-group col-md-3">{{ form.first_name|as_crispy_field }}</div>
+                        <div class="form-group col-md-3">{{ form.second_name|as_crispy_field }}</div>
+                        <div class="form-group col-md-3">{{ form.last_name|as_crispy_field }}</div>
+                    </div>
+                    <div class="form-row justify-content-around">
+                        <div class="form-group col-md-3">{{ form.birth_date|as_crispy_field }}</div>
+                        <div class="form-group pesel col-lg-2">{{ form.pesel|as_crispy_field }}</div>
+                    </div>
+                    <div class="form-row justify-content-around">
+                        <div class="form-group col-md-4">{{ form.address|as_crispy_field }}</div>
+                        <div class="form-group col-md-3">{{ form.city|as_crispy_field }}</div>
+                        <div class="form-group col-md-2">{{ form.zip_code|as_crispy_field }}</div>
+                    </div>
+                    <div class="form-row justify-content-around">
+                        <label for="mother_first_name">Imię Matki</label>
+                        <div class="form-group col-md-4"><input type="text" name="mother_first_name" id="mother_first_name"></div>
+                        <label for="mother_last_name">Nazwisko Matki</label>
+                        <div class="form-group col-md-4"><input type="text" name="mother_last_name" id="mother_last_name"></div>
+                    </div>
+                    <div class="form-row justify-content-around">
+                        <label for="father_first_name">Imię Ojca</label>
+                        <div class="form-group col-md-4"><input type="text" name="father_first_name" id="father_first_name"></div>
+                        <label for="father_last_name">Nazwisko Ojca</label>
+                        <div class="form-group col-md-4"><input type="text" name="father_last_name" id="father_last_name"></div>
+                    </div>
+                   </div>
+                <div class="submit-box">
+                    <input class="submit-button" type="submit" value="Prześlij">
+                </div>
+            </form>
+        </div>
 {% endblock %}

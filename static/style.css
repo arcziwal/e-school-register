@@ -125,3 +125,39 @@ a:hover {
     bottom:0;
     position:fixed;
 }
+
+/* ----------- Form ----------- */
+.my-form {
+    margin: 0 auto;
+    padding: 14px;
+    display: flex;
+}
+
+.my-form input {
+    display: block;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.submit-button {
+    padding: 5px 10px;
+    border-radius: 0;
+    text-transform: uppercase;
+    color: white;
+    background-color: black;
+}
+
+.submit-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
