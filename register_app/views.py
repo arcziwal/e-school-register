@@ -3,6 +3,7 @@ from django.views import View
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from .forms import AddStudentForm, CreateStudentAccountForm, AddTeacherForm, CreateTeacherAccountForm
 from .models import Parent, Student, Teacher
