@@ -1,19 +1,29 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from .forms import AddStudentForm, CreateStudentAccountForm, AddTeacherForm, CreateTeacherAccountForm
-from django.http import HttpResponse
-from django.contrib.auth.models import User
-from .models import Parent, Student, Teacher
-from.scripts import password_generator
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import AuthenticationForm
+from django.http import HttpResponse
+from .forms import AddStudentForm, CreateStudentAccountForm, AddTeacherForm, CreateTeacherAccountForm
+from .models import Parent, Student, Teacher
+from .scripts import password_generator, get_related_person
 
 
-class IndexPage(View):
+class IndexPage(LoginRequiredMixin, View):
+    login_url = '/login/'
+    redirect_field_name = 'index-view'
+
     def get(self, request):
         ctx = {'nav_bar_elements': [{'href': 'login/', 'name': 'Logowanie'},
                                     {'href': 'register/', 'name': 'Utwórz konto'}
                                     ]}
+        if request.user.is_authenticated:
+            username = request.user.username
+            user = User.objects.get(username=username)
+            person, user_type = get_related_person(user)
+            print(person.first_name)
+            print(user_type)
+            ctx['username'] = username
         return render(request, 'index.html', ctx)
 
 
@@ -32,21 +42,9 @@ class Login(View):
             user = authenticate(request, username=username, password=password)
             print("Wykonano autentyfikację")
             if user is not None:
-                if hasattr(user, 'teacher'):
-                    user_type = 'teacher'
-                    person = user.teacher
-                elif hasattr(user, 'student'):
-                    user_type = 'student'
-                    person = user.student
-                elif hasattr(user, 'parent'):
-                    user_type = 'parent'
-                    person = user.parent
-                else:
-                    user_type = 'unassigned'
-                    person = 'not_created'
                 login(request, user)
                 print("Zalogowano")
-                return redirect('/', {'user_type': user_type, 'person': person, 'test': 'test'})
+                return redirect('index-view')
 
 
 class RegisterView(View):
