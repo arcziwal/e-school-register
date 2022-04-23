@@ -29,6 +29,8 @@ class IndexPage(View):
     def get(self, request):
         ctx = {}
         if request.user.is_authenticated:
+            if request.user.is_superuser:
+                return render(request, "admin_menu.html")
             username = request.user.username
             user = User.objects.get(username=username)
             person, user_type = get_related_person(user)

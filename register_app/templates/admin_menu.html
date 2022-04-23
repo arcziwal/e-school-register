@@ -1,0 +1,31 @@
+{% extends "__base__.html" %}
+
+{% block title %}Strona Główna{% endblock %}
+
+{% block navbar %}
+                <ul class="navbar-nav">
+                    <li>
+                        <div class="box-1">
+                            <div class="btn btn-1 btn-2">
+                                <a href="/logout"><span>Wyloguj</span></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+{% endblock %}
+
+{% block content %}
+    <div class="m-4 p-3 width-medium text-color-black bg-white">
+        <h1>Witaj Admin. Wybierz co chcesz wykonać</h1>
+        <ol>
+            <li><a href="/student/add"><span style="color: black">Dodaj ucznia do bazy danych</span></a></li>
+            <li><a href="/student/create_account"><span style="color: black">Stwórz konto ucznia</span></a></li>
+            <li><a href="/teacher/add"><span style="color: black">Dodaj nauczyciela do bazy danych</span></a></li>
+            <li><a href="/teacher/create_account"><span style="color: black">Stwórz konto nauczyciela</span></a></li>
+            <li><a href="/class/create"><span style="color: black">Utwórz klasę</span></a></li>
+            <li><a href="/class/subject/create"><span style="color: black">Utwórz przedmiot</span></a></li>
+            <li><a href="/student/assign_to_class"><span style="color: black">Przydziel ucznia do klasy</span></a></li>
+
+        </ol>
+    </div>
+{% endblock %}
