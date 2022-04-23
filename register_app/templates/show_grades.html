@@ -1,0 +1,33 @@
+{% extends "__base__.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Utwórz konto ucznia{% endblock %}
+
+{% block navbar %}
+                <ul class="navbar-nav">
+                    {% if nav_bar_elements is not none %}
+                        {% for nav_bar_element in nav_bar_elements %}
+                            <li>
+                                <div class="box-1">
+                                    <div class="btn btn-1">
+                                        <a href="{{ nav_bar_element.href }}"><span>{{ nav_bar_element.name }}</span></a>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+{% endblock %}
+
+{% block content %}
+    <div class="m-4 p-3 width-medium text-color-darker bg-white">
+        <h1>Oceny ucznia: {{ student_name }}</h1>
+        <ol>
+           {% for grade in students_grades %}
+               <li>{{ grade.description }}: {{ grade.grade }}</li>
+           {% endfor %}
+        </ol>
+    <button type="button"><a href="/">POWRÓD DO STRONY GŁÓWNEJ</a></button>
+    </div>
+{% endblock content %}

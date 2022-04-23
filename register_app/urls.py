@@ -1,7 +1,7 @@
 from django.urls import path, include
 from .views import TemporaryView, IndexPage, Login, Logout, AddStudentView, CreateStudentAccountView, \
     CreateTeacherView, CreateTeacherAccountView, CreateSchoolClass, CreateSubjectView, CreateLessonView, \
-    PresenceCheckView, AssignStudentToClass, AddGradesView
+    PresenceCheckView, AssignStudentToClass, AddGradesView, ShowGradesView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -18,5 +18,6 @@ urlpatterns = [
     path('student/assign_to_class', AssignStudentToClass.as_view(), name='assign-student-to-class'),
     path('class/<str:school_class>/<str:subject>/<str:lesson>', PresenceCheckView.as_view(), name='check-presence'),
     path('class/<str:school_class>/<str:subject>/<str:lesson>/grades', AddGradesView.as_view(), name='add-grades'),
+    path('student/show_grades', ShowGradesView.as_view(), name="show=grades"),
     path('temp/', TemporaryView.as_view(), name="temporary-view"),
 ]

@@ -11,45 +11,68 @@ from .models import Parent, Student, Teacher, SchoolClass, Subject, Lesson, Atte
 from .scripts import password_generator, get_related_person, get_class_and_subject
 
 
-class IndexPage(LoginRequiredMixin, View):
+class IndexPage(View):
+    """
+    Display a main page, seen after login
+
+    **Context**
+    ``request.user.username``
+        Required to render template with right options available
+
+    **Template**
+    :template: 'register_app/index.html'
+
+    """
     login_url = '/login/'
     redirect_field_name = 'index-view'
 
     def get(self, request):
-        ctx = {'nav_bar_elements': [{'href': 'login/', 'name': 'Logowanie'},
-                                    {'href': 'register/', 'name': 'Utwórz konto'}
-                                    ]}
+        ctx = {}
         if request.user.is_authenticated:
             username = request.user.username
             user = User.objects.get(username=username)
             person, user_type = get_related_person(user)
-            print(person.first_name)
-            print(user_type)
+            if user_type == 'teacher':
+                ctx['navbar_options'] = "teacher"
+            elif user_type == 'student':
+                ctx['navbar_options'] = 'student'
             ctx['username'] = username
-        return render(request, 'index.html', ctx)
+            return render(request, 'index.html', ctx)
+        else:
+            return redirect("login-view")
 
 
 class Login(View):
+    """
+    Display login form
+
+    **Context**
+        Form to enter login and password
+
+    **Template**
+    :template: 'register_app/login_form.html'
+    """
+
     def get(self, request):
         form = AuthenticationForm()
         return render(request, 'login_form.html', {'form': form})
 
     def post(self, request):
-        print("przesłano dane")
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
-            print("sprawdzono dane")
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(request, username=username, password=password)
-            print("Wykonano autentyfikację")
             if user is not None:
                 login(request, user)
-                print("Zalogowano")
                 return redirect('index-view')
 
 
 class Logout(LoginRequiredMixin, View):
+    """
+    Logout View, redirecting to '/login' page
+    """
+
     login_url = '/login/'
 
     def get(self, request):
@@ -58,6 +81,17 @@ class Logout(LoginRequiredMixin, View):
 
 
 class AddStudentView(LoginRequiredMixin, View):
+    """
+    Display a form to add new student to db, requires login
+
+    **Context**
+    ``AddStudentForm``
+        An instance of :forms: register_app.AddStudentForm
+
+    **Template**
+    :template: 'register_app/add_student_form.html'
+    """
+
     login_url = '/login/'
 
     def get(self, request):
@@ -97,6 +131,16 @@ class AddStudentView(LoginRequiredMixin, View):
 
 
 class CreateStudentAccountView(LoginRequiredMixin, View):
+    """
+    Display a view with form to connect student object with User, require login.
+
+    **context**
+    ``CreateStudentAccountForm``
+        An instance of :forms: register_app.CreateStudentAccountForm
+
+    **Template**
+    :template: 'register_app/student_account_creator.html'
+    """
     login_url = '/login/'
 
     def get(self, request):
@@ -128,6 +172,16 @@ class CreateStudentAccountView(LoginRequiredMixin, View):
 
 
 class CreateTeacherView(LoginRequiredMixin, View):
+    """
+    Display a form to create new Teacher in db, require login
+
+    **context**
+    ``AddTeacherForm``
+        An instance of :forms: register_app.AddTeacherForm
+
+    **Template**
+    :template: 'register_app/add_teacher_form.html'
+    """
     login_url = '/login/'
 
     def get(self, request):
@@ -144,6 +198,16 @@ class CreateTeacherView(LoginRequiredMixin, View):
 
 
 class CreateTeacherAccountView(LoginRequiredMixin, View):
+    """
+    Display a form to connect Teacher object with User object, require login
+
+    **context**
+    ``CreateTeacherAccountForm``
+        An instance of :forms: register_app.CreateTeacherAccountForm
+
+    **Template**
+    :template: 'register_app/teacher_account_creator.html'
+    """
     login_url = '/login/'
 
     def get(self, request):
@@ -171,6 +235,16 @@ class CreateTeacherAccountView(LoginRequiredMixin, View):
 
 
 class CreateSchoolClass(LoginRequiredMixin, View):
+    """
+    Display a form to create new class in school, require login.
+
+    **context**
+    ``CreateSchoolClassForm``
+        An instance of :forms: register_app.CreateSchoolClassForm
+
+    **Template**
+    :template: 'register_app/create_class_form.html'
+    """
     login_url = '/login/'
 
     def get(self, request):
@@ -187,6 +261,16 @@ class CreateSchoolClass(LoginRequiredMixin, View):
 
 
 class CreateSubjectView(LoginRequiredMixin, View):
+    """
+    Display a from to create new subject in certain class, require login.
+
+    **context**
+    ``CreateSubjectForm``
+        An instance of :forms: register_app.CreateSubjectForm
+
+    **Template**
+    :template: 'register_app/create_subject_form.html'
+    """
     login_url = '/login/'
 
     def get(self, request):
@@ -206,6 +290,17 @@ class CreateSubjectView(LoginRequiredMixin, View):
 
 
 class CreateLessonView(LoginRequiredMixin, PermissionRequiredMixin, View):
+    """
+    Display a form to start a new lessons, require login and permissions given to group: Teachers
+
+    **context**
+    ``CreateLessonForm``
+        An instance of :forms: register_app.CreateLessonForm
+
+    **Template**
+    :template: 'register_app/initialize_lesson.html'
+    """
+
     login_url = '/login/'
     permission_required = 'register_app.can_create_lessons'
 
@@ -238,6 +333,17 @@ class CreateLessonView(LoginRequiredMixin, PermissionRequiredMixin, View):
 
 
 class AssignStudentToClass(LoginRequiredMixin, View):
+    """
+    Display a form to assign a student to certain class.
+
+    **context**
+    ``AssignStudentToClassForm``
+        An instance of :forms: register_app.AssignStudentToClassForm
+
+    **Template**
+    :template: 'register_app/assign_student_to_class.html'
+    """
+
     login_url = '/login/'
 
     def get(self, request):
@@ -255,8 +361,22 @@ class AssignStudentToClass(LoginRequiredMixin, View):
 
 
 class PresenceCheckView(LoginRequiredMixin, PermissionRequiredMixin, View):
+    """
+    Display a form to enter presence on certain lesson.
+
+    :param str school_class: name of class
+    :param str subject: name of subject
+    :param str lesson: beginning date of certain lesson
+
+    **context**
+        Parameters given in request
+
+    **Template**
+    :template: 'register_app/presence_check.html'
+
+    """
     login_url = '/login/'
-    permission_required = 'register_app.can_check_attendance'
+    permission_required = 'register_app.can_create_lessons'
 
     def get(self, request, **kwargs):
         school_class, school_class_object, subject, subject_object = get_class_and_subject(**kwargs)
@@ -302,8 +422,22 @@ class PresenceCheckView(LoginRequiredMixin, PermissionRequiredMixin, View):
 
 
 class AddGradesView(LoginRequiredMixin, PermissionRequiredMixin, View):
+    """
+    Display a form to enter grades on certain lesson.
+
+    :param str school_class: name of class
+    :param str subject: name of subject
+    :param str lesson: beginning date of certain lesson
+
+    **context**
+        Parameters given in request
+
+    **Template**
+    :template: 'register_app/add_grades.html'
+    """
+
     login_url = '/login/'
-    permission_required = 'register_app.can_set_grades'
+    permission_required = 'register_app.can_create_lessons'
 
     def get(self, request, **kwargs):
         school_class, school_class_object, subject, subject_object = get_class_and_subject(**kwargs)
@@ -346,16 +480,41 @@ class AddGradesView(LoginRequiredMixin, PermissionRequiredMixin, View):
         return render(request, 'added_grades_list.html', {'added_grades': response})
 
 
+class ShowGradesView(LoginRequiredMixin, View):
+    """
+       Display a view showing grades of cerain student
+
+       **context**
+
+
+       **Template**
+       :template: 'register_app/
+       """
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            username = request.user.username
+            user = User.objects.get(username=username)
+            person, user_type = get_related_person(user)
+            if user_type == "student":
+                students_grades = person.grades_set.all()
+                ctx = {
+                    'students_grades': students_grades,
+                    'student_name': f"{person.first_name} {person.last_name}"
+                }
+                return render(request, 'show_grades.html', ctx)
+
+
 class TemporaryView(View):
+    """
+    Temporary view displayed on subpages under construction
+
+    **Template**
+    :template: 'register_app/temporary_view.html'
+    """
+
     def get(self, request):
         return render(request, 'temporary_view.html')
 
     def post(self, request):
         print("Zalogowano")
-
-
-
-
-
-
-
