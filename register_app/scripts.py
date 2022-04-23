@@ -1,6 +1,6 @@
 import random
 import string
-from .models import Teacher, Student, Parent
+from .models import Teacher, Student, Parent, SchoolClass, SUBCJECTS, Subject
 
 
 def password_generator():
@@ -30,3 +30,15 @@ def get_related_person(user):
             return None
         return person, user_type
 
+
+def get_class_and_subject(**kwargs):
+    school_class = kwargs['school_class']
+    subject = kwargs['subject']
+    school_class_object = SchoolClass.objects.get(name_of_class=school_class)
+    for i in range(len(SUBCJECTS)):
+        if subject == SUBCJECTS[i][1]:
+            subject_object = Subject.objects.get(type=SUBCJECTS[i][0])
+        else:
+            subject_object = None
+        return school_class, school_class_object, subject, subject_object
+    return school_class, school_class_object

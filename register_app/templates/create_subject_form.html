@@ -1,0 +1,32 @@
+{% extends "__base__.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Utwórz konto ucznia{% endblock %}
+
+{% block navbar %}
+                <ul class="navbar-nav">
+                    {% if nav_bar_elements is not none %}
+                        {% for nav_bar_element in nav_bar_elements %}
+                            <li>
+                                <div class="box-1">
+                                    <div class="btn btn-1">
+                                        <a href="{{ nav_bar_element.href }}"><span>{{ nav_bar_element.name }}</span></a>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+{% endblock %}
+
+{% block content %}
+    <div class="m-4 p-3 width-medium text-color-darker bg-white">
+        <h1>Wpisz symbol klasy i wychowawcę, aby utworzyć klasę: </h1>
+        <form action="/class/subject/create" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Utwórz przedmiot</button>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Student, Teacher
+from .models import Student, Teacher, SchoolClass, Parent, Subject, Lesson
 from django import forms
 
 YEARS = (2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016)
@@ -44,3 +44,44 @@ class CreateTeacherAccountForm(ModelForm):
     class Meta:
         model = Teacher
         fields = {'teacher'}
+
+
+class CreateSchoolClassForm(ModelForm):
+    name = forms.CharField(required=True, label='Symbol klasy')
+    tutor = forms.ModelChoiceField(queryset=Teacher.objects.all(), initial=0, label="Wychowawca")
+
+    class Meta:
+        model = Teacher
+        fields = {}
+        widgets = {
+            'name': forms.TextInput(attrs={'style': 'max-width: 3em'})
+        }
+
+
+class CreateSubjectForm(ModelForm):
+
+    class Meta:
+        model = Subject
+        fields = {'type', 'teacher', 'school_class'}
+
+
+class CreateLessonForm(ModelForm):
+    school_class = forms.ModelChoiceField(queryset=SchoolClass.objects.all(), initial=0, label="Klasa")
+    subject = forms.ModelChoiceField(queryset=Subject.objects.all(), initial=0, label="Przedmiot")
+
+    class Meta:
+        model = Lesson
+        fields = {'beginning_hour', 'ending_hour', 'topic'}
+        field_classes = {
+            'beginning_hour': forms.DateTimeField,
+            'ending_hour': forms.DateTimeField,
+        }
+        widgets = {
+            'topic': forms.Textarea,
+        }
+
+
+class AssignStudentToClassForm(forms.Form):
+    student = forms.ModelChoiceField(queryset=Student.objects.all(), initial=0, label="Uczeń")
+    school_class = forms.ModelChoiceField(queryset=SchoolClass.objects.all(), initial=0, label="Klasa")
+
